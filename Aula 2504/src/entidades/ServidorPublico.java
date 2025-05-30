@@ -18,6 +18,11 @@ public class ServidorPublico
         private String lotacao;
         private String email;
 
+        private double calcularSalario;
+
+        private double clacularHorasExtras;
+
+        private double somaHoras;
         public String getEmail() {
                 return email;
         }
@@ -137,5 +142,23 @@ public class ServidorPublico
 
         public void setNaturalidade(String naturalidade) {
                 this.naturalidade = naturalidade;
+        }
+
+        public double CalcularHorasExtras(double... numeroHoras) {
+                double somaHoras = 0;
+                for (double hora : numeroHoras) {
+                        somaHoras += hora;
+                }
+                System.out.println("Soma das horas: "+somaHoras);
+                return somaHoras;
+        }
+
+        public double getCalcularSalario() {
+                double somasal = salario + clacularHorasExtras;
+                return calcularSalario;
+        }
+
+        public void setCalcularSalario(double calcularSalario) {
+                this.calcularSalario = calcularSalario;
         }
 }
