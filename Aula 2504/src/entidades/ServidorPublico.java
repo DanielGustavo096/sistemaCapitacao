@@ -23,6 +23,20 @@ public class ServidorPublico
         private double clacularHorasExtras;
 
         private double somaHoras;
+
+        public ServidorPublico(){};
+
+        public ServidorPublico(int matricula, String nome){
+                this.matricula = matricula;
+                this.nome = nome;
+        }
+
+        public ServidorPublico(int matricula, String nome, String cargo){
+                this.matricula = matricula;
+                this.nome = nome;
+                this.cargo = cargo;
+        }
+
         public String getEmail() {
                 return email;
         }
