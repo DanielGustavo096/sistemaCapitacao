@@ -1,62 +1,55 @@
 package entidades;
 
-import java.util.Scanner;
-
 public class Produto {
+    private String nome;
+    private int quantidade;
+    private double preco;
 
-    Scanner leia = new Scanner(System.in);
-    private String nomeProduto;
-    private double precoProduto;
-    private int qtdeProduto;
 
-    public int getQtdeProduto() {
-        return qtdeProduto;
+    public double getPreco() {
+        return preco;
     }
 
-    public void setQtdeProduto(int qtdeProduto) {
-        this.qtdeProduto = qtdeProduto;
+    public void setPreco(double preco) {
+        this.preco = preco;
     }
 
-    public double getPrecoProduto() {
-        return precoProduto;
+    public int getQuantidade() {
+        return quantidade;
     }
 
-    public void setPrecoProduto(double precoProduto) {
-        this.precoProduto = precoProduto;
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
     }
 
-    public String getNomeProduto() {
-        return nomeProduto;
+
+    public String getNome() {
+        return nome;
     }
 
-    public void setNomeProduto(String nomeProduto) {
-        this.nomeProduto = nomeProduto;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public void
-
-    public Produto(){};
-
-    public Produto(String nomeProduto, double precoProduto, int qtdeProduto) {
-        this.nomeProduto = nomeProduto;
-        this.precoProduto = precoProduto;
-        this.qtdeProduto = qtdeProduto;
+    public Produto(String nome, double preco, int qntd){
+        setNome(nome);
+        setPreco(preco);
+        setQuantidade(qntd);
     }
-    public void addProduto(int qtde){
-        System.out.println("Quantidade de produtos a serem adicionados: ");
-        int adicionar = leia.nextInt();
-        qtdeProduto += adicionar;
-
-        System.out.println("Nome: "+nomeProduto+"\n"+"Preço: "+precoProduto+"\n"+
-                "Quantidade em Estoque: "+qtdeProduto);
+    public double valorTotalEmEstoque(){
+        double total = getPreco()*getQuantidade();
+        return total;
     }
-
-    public void removProduto(int qtde){
-        System.out.println("Quantidade de produtos a serem removidos: ");
-        int removido = leia.nextInt();
-        qtdeProduto -= removido;
-
-        System.out.println("Nome: "+nomeProduto+"\n"+"Preço: "+precoProduto+"\n"+
-                "Quantidade em Estoque: "+qtdeProduto);
+    public void adicionarProdutos(int quantidade){
+        setQuantidade(getQuantidade()+quantidade);
+        mostrarInformacoes();
+    }
+    public void removerProdutos(int quantidade){
+        setQuantidade(getQuantidade()-quantidade);
+        mostrarInformacoes();
+    }
+    public void mostrarInformacoes() {
+        System.out.printf("Dados atualizados: " + getNome() + ",R$ " + getPreco() + ", " + getQuantidade() + ", R$ %.2f", valorTotalEmEstoque());
+        System.out.println();
     }
 }
